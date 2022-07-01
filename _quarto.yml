@@ -1,0 +1,23 @@
+project:
+  type: book
+
+book:
+  title: "Applied Spatial Statistics with R"
+  author: "Yigong Hu"
+  date: "01/07/2022"
+  chapters:
+    - index.qmd
+    - 01-intro.qmd
+    - 02-summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+
+
