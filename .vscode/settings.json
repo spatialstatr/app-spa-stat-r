@@ -1,0 +1,7 @@
+{
+    "ltex.language": "en-GB",
+    "ltex.completionEnabled": true,
+    "ltex.disabledRules": {
+        "en-GB": ["ARROWS"]
+    }
+}

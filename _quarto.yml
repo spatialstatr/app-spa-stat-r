@@ -3,7 +3,7 @@ project:
 
 book:
   title: "Applied Spatial Statistics with R"
-  author: "Yigong Hu"
+  author: "Yigong Hu, Richard Harris, Richard Timmerman"
   date: "01/07/2022"
   chapters:
     - index.qmd

@@ -1,5 +1,84 @@
 # Introduction
 
-This is a book created from markdown and executable code.
+Before starting our journey of spatial statistics, we would like to introduce some basic concepts.
+In the past few years, we found that it is very likely for some beginners in spatial statistics to confuse some groundwork ideas.
+Making them clear just like the constructing the base of a skyscraper.
+The following sections are about data, information, theories and applications.
+We are trying to give readers an explicit and comprehensive view, and make it easier for them to learn models introduced later.
 
-See @knuth84 for additional discussion of literate programming.
+## Spatial Data
+
+In these days, data are something extraordinary important, existing in almost all parts of our life and work.
+As the saying goes that "data are carriers of information", there are variant types of data describing certain kinds of information.
+There are some examples:
+
+- The growth of gross domestic product (GDP) is used to evaluate the speed of economic development in a certain area;
+- Pictures of handwriting words are valuable data sources in training artificial neural networks;
+- Articles and posts on the Internet is able to reflect the public opinion on some events and art works;
+- Interactions between users and an app are recorded to analysis their preferences;
+- Coordinates of trajectory points denoted by GPS would show user's routine.
+
+Subjects in the statements above are what we called "data".
+We can find that data are usually expressed by numbers or something mapped from numbers.
+The GDP and coordinates (in a certain coordinate reference system) is just a numeric number;
+pictures and videos are actually matrices of numbers indicating the colour at each pixel and timestamp;
+articles and posts are essentially series of characters encoded by integer numbers in computer
+(one of the most popular scheme is called "UTF-8");
+and interactions can be represented by events happened in the app,
+like "at 2 p.m. the user read the post for 2 minutes and pressed the like button".
+In summary, data are numbers reflecting certain aspects of information directly or indirectly.
+
+So what is the spatial data?
+In short, spatial data are "data companied by data of spatial information".
+And data of spatial information are essentially coordinates or coordinate sets.
+Sometimes we use the longitude and latitude to represent a pair of coordinates, and sometimes Cartesian coordinate.
+No matter which form is used, a coordinate and a location on Earth should be corresponded.
+In other words, coordinates are data reflecting a certain kind of information --- locations on Earth.
+For the sake of description, we refer the coordinates or coordinate sets as the "**geometry**".
+Geometry is the key feature of spatial data different from non-spatial data,
+as special information can be discovered from these geometries and their relationships.
+
+### Relational Data
+
+Before looking in depths of spatial data, we would like to introduce a concept from database theory --- "relational data".
+It is about how to organize and operate our data.
+
+
+<!-- Usually, spatial data contain not only geometry, but also some other data, like ID, name, area and border length.
+For example, [boundary data of local authority districts][boundary-uk] in UK also provide each authority's code;
+[census data][census-uk] provide even more data like the birth rate, index of multiple deprivation and car or van availability.
+We refer them as "**attributes**".
+Note that no matter for the geometry or the attribute, there needs to be a geographical unit to clarify what entities they are about.
+For example, if we choose "local authority districts" as the geographical unit when obtaining census data,
+each item in this data consists of the geometry of one district and the attribute set of it.
+A bundle of a geometry and a corresponding attribute set is called a "**feature**" in spatial data. -->
+
+<!-- TODO: Add a table showing an example of census data. -->
+
+<!-- TODO: Add a figure showing structures of a feature set. -->
+
+### Type of Spatial Data
+
+As we know, there are varies shapes in geometry, like the point, line, square, rectangle, circle and so on.
+In spatial data, we can also divide them into different types according to the shape of their geometry.
+
+Spatial Point Data
+: Geometries in this type of data are points.
+There is usually only a coordinate to show each feature's location.
+Usually this type of data is used to describe positions of events and small scale entities.
+Restaurants, as an example, can be regarded as points in a city because it is small enough to overlook its area compared with the whole city.
+
+Spatial Line Data
+: Geometries in this type of data are a connected series of line segments, i.e., a polygonal chain.
+It is actually a set of coordinates of all vertexes in this chain.
+
+<!-- TODO: Add figures demonstrating different types of spatial data. -->
+
+## Spatial Effects
+
+## Spatial Statistic Models
+
+## Statistical Software: R
+
+[boundary-uk]:https://geoportal.statistics.gov.uk/datasets/ons::local-authority-districts-december-2021-gb-bfc/about
+[census-uk]:https://www.ons.gov.uk/census
