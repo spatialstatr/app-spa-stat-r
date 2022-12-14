@@ -6,6 +6,47 @@ Making them clear just like the constructing the base of a skyscraper.
 The following sections are about data, information, theories and applications.
 We are trying to give readers an explicit and comprehensive view, and make it easier for them to learn models introduced later.
 
+## Relational Data
+
+Before looking in depths of spatial data, we would like to introduce a concept from database theory --- "relational data".
+It is about how to organize and operate our data.
+In relational data, data are organized as tables of several rows and columns.
+Tables are also called "relations".
+Rows are also called "records", "entities", or "tuples", while columns also called "attributes".
+Thus, data stroed in one table describe things of a same entity type.
+Note that entities here can be physical or conceptional.
+Usually, physical entites describe physically esisting substances or objects, while conceptional entities describe relationships between two entity types.
+For example, the following tables represent physical entities, schools and students.
+
+| ID | Name      | Gender | Age | Nation |
+| -- | --------- | ------ | --- | ------ |
+| 1  | Student_A | Male   | 15  | UK     |
+| 2  | Student_B | Female | 16  | US     |
+| 3  | Student_C | Male   | 16  | UK     |
+
+: A "Student" relation
+
+| ID | Name     | Type    | City       |
+| -- | -------- | ------- | ---------- |
+| 1  | School_A | Primary | London     |
+| 2  | School_B | Primary | London     |
+
+: A "School" relation
+
+The following table represents a relationship between schools and students.
+
+| Student | School | Join Year | Graduate Year |
+| ------- | ------ | --------- | ------------- |
+| 1       | 1      | 2000      | 2006          |
+| 2       | 1      | 2000      | 2006          |
+| 3       | 2      | 2000      | 2006          |
+
+: A "Student-School" relation
+
+For the sake of description, we refer to tables of physical objects as "entities", while tables of relationships as "relations" in this book.
+Correspondingly, rows of one entity are called "objects", while rows of one relation are called "records".
+Their columns are both "attributes".
+
 ## Spatial Data
 
 In these days, data are something extraordinary important, existing in almost all parts of our life and work.
@@ -29,8 +70,8 @@ like "at 2 p.m. the user read the post for 2 minutes and pressed the like button
 In summary, data are numbers reflecting certain aspects of information directly or indirectly.
 
 So what is the spatial data?
-In short, spatial data are "data companied by data of spatial information".
-And data of spatial information are essentially coordinates or coordinate sets.
+In short, spatial data are "data companied by spatial information".
+And spatial information is essentially coordinates or coordinate sets.
 Sometimes we use the longitude and latitude to represent a pair of coordinates, and sometimes Cartesian coordinate.
 No matter which form is used, a coordinate and a location on Earth should be corresponded.
 In other words, coordinates are data reflecting a certain kind of information --- locations on Earth.
@@ -38,20 +79,17 @@ For the sake of description, we refer the coordinates or coordinate sets as the 
 Geometry is the key feature of spatial data different from non-spatial data,
 as special information can be discovered from these geometries and their relationships.
 
-### Relational Data
-
-Before looking in depths of spatial data, we would like to introduce a concept from database theory --- "relational data".
-It is about how to organize and operate our data.
-
-
-<!-- Usually, spatial data contain not only geometry, but also some other data, like ID, name, area and border length.
+Usually, spatial data contain not only geometry, but also some other data, like ID, name, area and border length.
 For example, [boundary data of local authority districts][boundary-uk] in UK also provide each authority's code;
 [census data][census-uk] provide even more data like the birth rate, index of multiple deprivation and car or van availability.
-We refer them as "**attributes**".
+They are the relational data attributes connected to the geometries.
 Note that no matter for the geometry or the attribute, there needs to be a geographical unit to clarify what entities they are about.
 For example, if we choose "local authority districts" as the geographical unit when obtaining census data,
 each item in this data consists of the geometry of one district and the attribute set of it.
-A bundle of a geometry and a corresponding attribute set is called a "**feature**" in spatial data. -->
+
+A bundle of a geometry and a corresponding attribute set is called a "**feature**" in spatial data.
+Thus, a group of features in a spatial data set is actually a entity or relation from the view of relational data theory.
+The only difference lies in that there is a special attribute representing the geometry.
 
 <!-- TODO: Add a table showing an example of census data. -->
 
