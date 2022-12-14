@@ -27,7 +27,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Quarto Build
-        uses: docker://ghcr.io/spatialstatr/action-quarto-build:main
+        uses: docker://ghcr.io/spatialstatr/action-quarto-build:latest
       
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v1.0.6
