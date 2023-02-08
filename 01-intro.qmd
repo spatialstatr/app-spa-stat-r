@@ -107,9 +107,9 @@ Spatial Line Data
 Spatial Polygon Data
 
 :   Geometries in this type of data are polygons.
-    Actually, polygons are stored as a seires of points, which looks like closed polygonal chain.
+    Actually, polygons are stored as a series of points, which looks like closed polygonal chain.
     But the difference lies in that a polygon consists of both the polygonal chain (boundary) and area in it.
-    Thus, for polygons we can measrue their area, but for spatial line data we cannot.
+    Thus, for polygons we can measure their area, but for spatial line data we cannot.
 
 Spatial Raster Data
 
@@ -126,14 +126,14 @@ These bands have the same geographical settings, but capture different data.
 
 ### Format of Spatial Data
 
-To storage spatial data properly on our computer, there are tens and hundreds of file formats desgined in the past decades.
-In this section, we will only introduce some popular formats, which can be accepted by most geographical infromation softwares.
+To storage spatial data properly on our computer, there are tens and hundreds of file formats designed in the past decades.
+In this section, we will only introduce some popular formats, which can be accepted by most geographical information systems.
 
-#### Comma Seperated Values (CSV)
+#### Comma Separated Values (CSV)
 
-This format is probibly the most popular one.
+This format is probably the most popular one.
 In a CSV file which is actually a table, each row represents a entity/record.
-Columns are seperated by commas, representing attributes.
+Columns are separated by commas, representing attributes.
 Geometry information is stored in a special column.
 For spatial point data which we only need coordinates of those points, there are some columns telling us values of every dimension, such as "longitude" and "latitude".
 For spatial line data or polygon data, everything is not that simple.
@@ -141,10 +141,83 @@ Geometries are represented by texts of a special form listed in a column.
 From the special texts, we can know what they look like.
 This form is called "well-known text".
 
+::: callout-note
+When we talk about the formats of spatial data, we need to emphasis its difference from file extension name on computer.
+Data format means how data are organized.
+But the extension name of a file is just a mark to tell users and the operating system what format data are organized as in this file.
+For example, the CSV format requires data to be orgranized as a table, and columns to be separated by commas.
+And files of CSV-format data usually have the extension name `.csv`.
+When users found a file whose name has such a suffix, they may realize that this is a file of CSV-format data instantly.
+And the operating system is able to choose appropriate software to open this file.
+However, it does not mean that all files of suffix `.csv` to their names are comma-separated values.
+They could be a Excel work sheet but with wrong extension names.
+And also a file of CSV-format data does not need to have the `.csv` extension name.
+It still works even there is no extension name, or extension names like `.cs`, `.sv`.
+Above all, there are no restrict relations between file formats and extension names.
+Thus, converting a file to another format is not as easy as changing its extension name.
+:::
+
 The strengths of this data type are obvious.
 It is readable for human.
+However, to make it readable, files need a large size of disk space because values need to be converted to texts.
+For decimal values, they need to be rounded.
+Such a practice both reduces the precision and expand the file size.
+For a double-precision decimal number, it needs 8 bytes as a binary value which is as precise as $\frac{1}{2^{52}}$, but needs 16 bytes to display only 15 decimals.
+For spatial data, this weakness is critical, because geometries need many decimal numbers to be stored.
+And when text values contains special characters (i.e., comma and newline), it is confusing for both software and readers.
+Thus, although CSV is human-friendly, it is not the best choice for spatial data.
 
-When we talk about the formats of spatial data, we need to emphesis its difference from file extension name on computer.
+#### ESRI Shapefile
+
+Usually it also referred as "Shapefile" or "shape".
+This is another famous and popular format for spatial data.
+Supporting it is almost a standard part of GIS software.
+Unlike other formats, ESRI Shapefile is actually a format of a group of files.
+In each group, there is only one type of spatial features.
+The group includes files of extension names `.shp`, `.shx`, and `.dbf` at least.
+The geometry is stored in the `.shx` file of a binary format, while attributes are stored in the `.dbf` file which is a "dBase" database file.
+Usually, there is a file of extension name `.prj` to store the coordinate reference system.
+Thus, when we refer ESRI Shapefile data, we mean not only the `.shp` file, but the file group.
+
+Just like CSV data, the strength of ESRI Shapefile mainly lies in its prevalence.
+As it is acceptable for most GIS software, distributing your data in this format is a good idea on most occassions.
+However, there are also some problems that cannot be overlooked.
+First, the loose file organization many cause problems during transfer.
+So usually we need to put them into a compressed file.
+Second, names of attributes cannot be longer than 10 characters.
+This limitation is caused by the "dBase" database.
+These two limitations affect the user's experience most.
+Apart from that, there are many other limitations.[^01-intro-1]
+So I would not suggest readers to use this file format too much.
+There are many other alternatives.
+
+[^01-intro-1]: For more information, please turn to this page http://switchfromshapefile.org/.
+
+#### GeoJSON
+
+When you are working with Web GIS, you may be familiar with JSON and GeoJSON.
+JSON is short for "JavaScript object notation".
+And GeoJSON is a special JSON format for spatial data.
+This is also a readable format.
+Everything of a feature set is stored in a file of JSON format.
+As JSON is well supported by Web techniques, GeoJSON can be easily supported by Web GIS. However, as it is readable, it may take up more disk space.
+There are more special characters in the JSON format, but it is well defined to avoid conflict with text fields.
+Generally speaking, it is a good choice for spatial data.
+But it is not widely supported.
+Be careful when you choose it.
+
+#### GeoPackage
+
+This is a comprehensive format for spatial data.
+Like ESRI Shapefile, it use SQLite, a file-based database, to store attributes.
+However, unlike dBase databse, SQLite is extensible and does not limit the length of attribute names.
+Thanks to the database scheme, there are restrictions to avoid invalid field values.
+However, as it is a recently released format, it is not supported by as many software as ESRI Shapefile.
+
+::: callout-note
+We cannot list all existing formats of spatial data here.
+Readers can turn to https://gdal.org/drivers/vector/index.html to find out more formats.
+:::
 
 ## Spatial Effects
 
