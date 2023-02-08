@@ -221,6 +221,13 @@ Readers can turn to https://gdal.org/drivers/vector/index.html to find out more 
 
 ## Spatial Effects
 
+In 1970, Tobler wrote that "everything is related to everything else, but near things are more related than distant things", which is known as the first law of geography [@Tobler-1970].
+Based on this theory, two types of spatial effects are recognized by most geographers: spatial autocorrelation and spatial heterogeneity.
+
+### Spatial Autocorrelation
+
+Before talking about spatial autocorrelation, I'd like to introduce autocorrelation.
+
 ## Spatial Statistic Models
 
 ## Statistical Software: R
