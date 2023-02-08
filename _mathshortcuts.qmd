@@ -1,5 +1,98 @@
 ::: {.hidden}
 $$
 \def\vA{{\bf A}}
+\def\vB{{\bf B}}
+\def\vC{{\bf C}}
+\def\vD{{\bf D}}
+\def\vE{{\bf E}}
+\def\vF{{\bf F}}
+\def\vG{{\bf G}}
+\def\vH{{\bf H}}
+\def\vI{{\bf I}}
+\def\vJ{{\bf J}}
+\def\vK{{\bf K}}
+\def\vL{{\bf L}}
+\def\vM{{\bf M}}
+\def\vN{{\bf N}}
+\def\vO{{\bf O}}
+\def\vP{{\bf P}}
+\def\vQ{{\bf Q}}
+\def\vR{{\bf R}}
+\def\vS{{\bf S}}
+\def\vT{{\bf T}}
+\def\vU{{\bf U}}
+\def\vV{{\bf V}}
+\def\vW{{\bf W}}
+\def\vX{{\bf X}}
+\def\vY{{\bf Y}}
+\def\vZ{{\bf Z}}
+\def\va{{\bf a}}
+\def\vb{{\bf b}}
+\def\vc{{\bf c}}
+\def\vd{{\bf d}}
+\def\ve{{\bf e}}
+\def\vf{{\bf f}}
+\def\vg{{\bf g}}
+\def\vh{{\bf h}}
+\def\vi{{\bf i}}
+\def\vj{{\bf j}}
+\def\vk{{\bf k}}
+\def\vl{{\bf l}}
+\def\vm{{\bf m}}
+\def\vn{{\bf n}}
+\def\vo{{\bf o}}
+\def\vp{{\bf p}}
+\def\vq{{\bf q}}
+\def\vr{{\bf r}}
+\def\vs{{\bf s}}
+\def\vt{{\bf t}}
+\def\vu{{\bf u}}
+\def\bv{{\bf v}}
+\def\vw{{\bf w}}
+\def\vx{{\bf x}}
+\def\vy{{\bf y}}
+\def\vz{{\bf z}}
+\def\valpha{{\bf \alpha}}
+\def\vbeta{{\bf \beta}}
+\def\vchi{{\bf \chi}}
+\def\vdelta{{\bf \delta}}
+\def\vepsilon{{\bf \epsilon}}
+\def\veta{{\bf \eta}}
+\def\vgamma{{\bf \gamma}}
+\def\viota{{\bf \iota}}
+\def\vkappa{{\bf \kappa}}
+\def\vlambda{{\bf \lambda}}
+\def\vmu{{\bf \mu}}
+\def\vomega{{\bf \omega}}
+\def\vphi{{\bf \phi}}
+\def\vpi{{\bf \pi}}
+\def\vpsi{{\bf \psi}}
+\def\vrho{{\bf \rho}}
+\def\vsigma{{\bf \sigma}}
+\def\vtau{{\bf \tau}}
+\def\vtheta{{\bf \theta}}
+\def\vupsilon{{\bf \upsilon}}
+\def\vxi{{\bf \xi}}
+\def\vzeta{{\bf \zeta}}
+\def\vDelta{{\bf \Delta}}
+\def\vGamma{{\bf \Gamma}}
+\def\vLambda{{\bf \Lambda}}
+\def\vOmega{{\bf \Omega}}
+\def\vPhi{{\bf \Phi}}
+\def\vPi{{\bf \Pi}}
+\def\vPsi{{\bf \Psi}}
+\def\vSigma{{\bf \Sigma}}
+\def\vTheta{{\bf \Theta}}
+\def\vUpsilon{{\bf \Upsilon}}
+\def\vXi{{\bf \Xi}}
+\def\vzero{\b{f {0}}}
+\def\vones{\b{f {1}}}
+
+\def\T{^\mathrm{T}}
+\def\I{^{-1}}
+\def\IG{^{-}}
+
+\def\rvec#1{{\left(#1\right)}}
+\def\cvec#1{{\left(#1\right)\T}}
 $$
 :::

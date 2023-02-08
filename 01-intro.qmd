@@ -1,5 +1,13 @@
 # Introduction
 
+{{< include _mathshortcuts.qmd >}}
+
+```{r, include=FALSE}
+library(sf)
+library(tidyverse)
+theme_set(theme_bw())
+```
+
 Before starting our journey of spatial statistics, we would like to introduce some basic concepts.
 In the past few years, we found that it is very likely for some beginners in spatial statistics to confuse some groundwork ideas.
 Making them clear just like the constructing the base of a skyscraper.
@@ -83,9 +91,9 @@ A bundle of a geometry and a corresponding attribute set is called a "**feature*
 Thus, a group of features in a spatial data set is actually a entity or relation from the view of relational data theory.
 The only difference lies in that there is a special attribute representing the geometry.
 
-<!-- TODO: Add a table showing an example of census data. -->
+<!--# TODO: Add a table showing an example of census data. -->
 
-<!-- TODO: Add a figure showing structures of a feature set. -->
+<!--# TODO: Add a figure showing structures of a feature set. -->
 
 ### Type of Spatial Data
 
@@ -118,7 +126,7 @@ Spatial Raster Data
     Position of each cell is captured in this data.
     Cells in a spatial raster data set have the same width and height.
 
-<!-- TODO: Add figures demonstrating different types of spatial data. -->
+<!--# TODO: Add figures demonstrating different types of spatial data. -->
 
 For spatial point, line and polygon data, each feature can be simple or multiple.
 And usually there are multiple "bands" in raster data.
@@ -227,6 +235,50 @@ Based on this theory, two types of spatial effects are recognized by most geogra
 ### Spatial Autocorrelation
 
 Before talking about spatial autocorrelation, I'd like to introduce autocorrelation.
+When we are analyzing the distribution of a group of $n$ observations $y_1,y_2,\cdots,y_n$, everything would be easier when they are independent and identically distributed (short for i.i.d.), drawn from a population.
+We would not want to find correlations between observations themselves.
+However, for some types of data, such a kind of correlation is likely to exist, such as time series data.
+Samples generated at time $t$ and $t+1$ are likely to be correlated.
+It may cause estimates of linear model to be biased.
+This is autocorrelation and why we should avoid it.
+In spatial data, autocorrelation could be found in nearby samples, because of the Tobler's law.
+In this case, when modelling this data, ordinary linear regression is no longer approiate.
+We need some special techniques.
+
+```{r, echo=FALSE}
+#| label: fig-demo-spatial-autocorrelation
+#| fig-cap: Demostration of spatial autocorrelated data.
+#| fig-subcap: 
+#|   - "Strongly autocorrelated (positive)"
+#|   - "Weakly autocorrelated (positive)"
+#|   - "Strongly autocorrelated (negative)"
+#|   - "Weakly autocorrelated (negative)"
+#| layout-ncol: 2
+
+gen_autoreg <- function(w, e, rho) {
+  solve(diag(nrow = length(e)) - w * rho, e)
+}
+spac_coords <- data.frame(x = rep(1:10, each = 10), y = rep(1:10, times = 10))
+spac_e <- rnorm(nrow(spac_coords))
+spac_dist <- dist(spac_coords, diag = T, upper = T)
+spac_w <- as.matrix(exp(-spac_dist^2/16))
+
+cbind(value = gen_autoreg(spac_w, spac_e, 0.9), spac_coords) |>
+  ggplot(aes(x, y, fill = value)) + geom_tile() + coord_fixed(expand = F)
+
+cbind(value = gen_autoreg(spac_w, spac_e, 0.3), spac_coords) |>
+  ggplot(aes(x, y, fill = value)) + geom_tile() + coord_fixed(expand = F)
+
+cbind(value = gen_autoreg(spac_w, spac_e, -0.9), spac_coords) |>
+  ggplot(aes(x, y, fill = value)) + geom_tile() + coord_fixed(expand = F)
+
+cbind(value = gen_autoreg(spac_w, spac_e, -0.3), spac_coords) |>
+  ggplot(aes(x, y, fill = value)) + geom_tile() + coord_fixed(expand = F)
+```
+
+Such an effect is common in our daily life.
+
+<!--# TODO: Add some examples for spatial autocorrelatio. -->
 
 ## Spatial Statistic Models
 
