@@ -18,25 +18,25 @@ Note that entities here can be physical or conceptional.
 Usually, physical entites describe physically esisting substances or objects, while conceptional entities describe relationships between two entity types.
 For example, the following tables represent physical entities, schools and students.
 
-| ID | Name      | Gender | Age | Nation |
-| -- | --------- | ------ | --- | ------ |
-| 1  | Student_A | Male   | 15  | UK     |
-| 2  | Student_B | Female | 16  | US     |
-| 3  | Student_C | Male   | 16  | UK     |
+| ID  | Name      | Gender | Age | Nation |
+|-----|-----------|--------|-----|--------|
+| 1   | Student_A | Male   | 15  | UK     |
+| 2   | Student_B | Female | 16  | US     |
+| 3   | Student_C | Male   | 16  | UK     |
 
 : A "Student" relation
 
-| ID | Name     | Type    | City       |
-| -- | -------- | ------- | ---------- |
-| 1  | School_A | Primary | London     |
-| 2  | School_B | Primary | London     |
+| ID  | Name     | Type    | City   |
+|-----|----------|---------|--------|
+| 1   | School_A | Primary | London |
+| 2   | School_B | Primary | London |
 
 : A "School" relation
 
 The following table represents a relationship between schools and students.
 
 | Student | School | Join Year | Graduate Year |
-| ------- | ------ | --------- | ------------- |
+|---------|--------|-----------|---------------|
 | 1       | 1      | 2000      | 2006          |
 | 2       | 1      | 2000      | 2006          |
 | 3       | 2      | 2000      | 2006          |
@@ -53,20 +53,15 @@ In these days, data are something extraordinary important, existing in almost al
 As the saying goes that "data are carriers of information", there are variant types of data describing certain kinds of information.
 There are some examples:
 
-- The growth of gross domestic product (GDP) is used to evaluate the speed of economic development in a certain area;
-- Pictures of handwriting words are valuable data sources in training artificial neural networks;
-- Articles and posts on the Internet is able to reflect the public opinion on some events and art works;
-- Interactions between users and an app are recorded to analysis their preferences;
-- Coordinates of trajectory points denoted by GPS would show user's routine.
+-   The growth of gross domestic product (GDP) is used to evaluate the speed of economic development in a certain area;
+-   Pictures of handwriting words are valuable data sources in training artificial neural networks;
+-   Articles and posts on the Internet is able to reflect the public opinion on some events and art works;
+-   Interactions between users and an app are recorded to analysis their preferences;
+-   Coordinates of trajectory points denoted by GPS would show user's routine.
 
 Subjects in the statements above are what we called "data".
 We can find that data are usually expressed by numbers or something mapped from numbers.
-The GDP and coordinates (in a certain coordinate reference system) is just a numeric number;
-pictures and videos are actually matrices of numbers indicating the colour at each pixel and timestamp;
-articles and posts are essentially series of characters encoded by integer numbers in computer
-(one of the most popular scheme is called "UTF-8");
-and interactions can be represented by events happened in the app,
-like "at 2 p.m. the user read the post for 2 minutes and pressed the like button".
+The GDP and coordinates (in a certain coordinate reference system) is just a numeric number; pictures and videos are actually matrices of numbers indicating the colour at each pixel and timestamp; articles and posts are essentially series of characters encoded by integer numbers in computer (one of the most popular scheme is called "UTF-8"); and interactions can be represented by events happened in the app, like "at 2 p.m. the user read the post for 2 minutes and pressed the like button".
 In summary, data are numbers reflecting certain aspects of information directly or indirectly.
 
 So what is the spatial data?
@@ -76,16 +71,13 @@ Sometimes we use the longitude and latitude to represent a pair of coordinates, 
 No matter which form is used, a coordinate and a location on Earth should be corresponded.
 In other words, coordinates are data reflecting a certain kind of information --- locations on Earth.
 For the sake of description, we refer the coordinates or coordinate sets as the "**geometry**".
-Geometry is the key feature of spatial data different from non-spatial data,
-as special information can be discovered from these geometries and their relationships.
+Geometry is the key feature of spatial data different from non-spatial data, as special information can be discovered from these geometries and their relationships.
 
 Usually, spatial data contain not only geometry, but also some other data, like ID, name, area and border length.
-For example, [boundary data of local authority districts][boundary-uk] in UK also provide each authority's code;
-[census data][census-uk] provide even more data like the birth rate, index of multiple deprivation and car or van availability.
+For example, [boundary data of local authority districts](https://geoportal.statistics.gov.uk/datasets/ons::local-authority-districts-december-2021-gb-bfc/about) in UK also provide each authority's code; [census data](https://www.ons.gov.uk/census) provide even more data like the birth rate, index of multiple deprivation and car or van availability.
 They are the relational data attributes connected to the geometries.
 Note that no matter for the geometry or the attribute, there needs to be a geographical unit to clarify what entities they are about.
-For example, if we choose "local authority districts" as the geographical unit when obtaining census data,
-each item in this data consists of the geometry of one district and the attribute set of it.
+For example, if we choose "local authority districts" as the geographical unit when obtaining census data, each item in this data consists of the geometry of one district and the attribute set of it.
 
 A bundle of a geometry and a corresponding attribute set is called a "**feature**" in spatial data.
 Thus, a group of features in a spatial data set is actually a entity or relation from the view of relational data theory.
@@ -101,27 +93,30 @@ As we know, there are varies shapes in geometry, like the point, line, square, r
 In spatial data, we can also divide them into different types according to the shape of their geometry.
 
 Spatial Point Data
-: Geometries in this type of data are points.
-There is usually only a coordinate to show each feature's location.
-Usually this type of data is used to describe positions of events and small scale entities.
-Restaurants, as an example, can be regarded as points in a city because it is small enough to overlook its area compared with the whole city.
+
+:   Geometries in this type of data are points.
+    There is usually only a coordinate to show each feature's location.
+    Usually this type of data is used to describe positions of events and small scale entities.
+    Restaurants, as an example, can be regarded as points in a city because it is small enough to overlook its area compared with the whole city.
 
 Spatial Line Data
-: Geometries in this type of data are a connected series of line segments, i.e., a polygonal chain.
-It is actually a set of coordinates of all vertexes in this chain.
-We can measure the length of a spatial line feature.
+
+:   Geometries in this type of data are a connected series of line segments, i.e., a polygonal chain.
+    It is actually a set of coordinates of all vertexes in this chain.
 
 Spatial Polygon Data
-: Geometries in this type of data are polygons.
-Actually, polygons are stored as a seires of points, which looks like closed polygonal chain.
-But the difference lies in that a polygon consists of both the polygonal chain (boundary) and area in it.
-Thus, for polygons we can measrue their area, but for spatial line data we cannot.
+
+:   Geometries in this type of data are polygons.
+    Actually, polygons are stored as a seires of points, which looks like closed polygonal chain.
+    But the difference lies in that a polygon consists of both the polygonal chain (boundary) and area in it.
+    Thus, for polygons we can measrue their area, but for spatial line data we cannot.
 
 Spatial Raster Data
-: Geometries in this type of data are cells of a raster grid.
-Just like photos taken by digital camera, each feature in a spatial raster data set represents a cell.
-Position of each cell is captured in this data.
-Cells in a spatial raster data set have the same width and height.
+
+:   Geometries in this type of data are cells of a raster grid.
+    Just like photos taken by digital camera, each feature in a spatial raster data set represents a cell.
+    Position of each cell is captured in this data.
+    Cells in a spatial raster data set have the same width and height.
 
 <!-- TODO: Add figures demonstrating different types of spatial data. -->
 
@@ -140,8 +135,7 @@ This format is probibly the most popular one.
 In a CSV file which is actually a table, each row represents a entity/record.
 Columns are seperated by commas, representing attributes.
 Geometry information is stored in a special column.
-For spatial point data which we only need coordinates of those points, there are some columns telling us values of every dimension,
-such as "longitude" and "latitude".
+For spatial point data which we only need coordinates of those points, there are some columns telling us values of every dimension, such as "longitude" and "latitude".
 For spatial line data or polygon data, everything is not that simple.
 Geometries are represented by texts of a special form listed in a column.
 From the special texts, we can know what they look like.
@@ -157,6 +151,3 @@ When we talk about the formats of spatial data, we need to emphesis its differen
 ## Spatial Statistic Models
 
 ## Statistical Software: R
-
-[boundary-uk]:https://geoportal.statistics.gov.uk/datasets/ons::local-authority-districts-december-2021-gb-bfc/about
-[census-uk]:https://www.ons.gov.uk/census
