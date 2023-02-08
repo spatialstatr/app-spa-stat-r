@@ -109,8 +109,48 @@ Restaurants, as an example, can be regarded as points in a city because it is sm
 Spatial Line Data
 : Geometries in this type of data are a connected series of line segments, i.e., a polygonal chain.
 It is actually a set of coordinates of all vertexes in this chain.
+We can measure the length of a spatial line feature.
+
+Spatial Polygon Data
+: Geometries in this type of data are polygons.
+Actually, polygons are stored as a seires of points, which looks like closed polygonal chain.
+But the difference lies in that a polygon consists of both the polygonal chain (boundary) and area in it.
+Thus, for polygons we can measrue their area, but for spatial line data we cannot.
+
+Spatial Raster Data
+: Geometries in this type of data are cells of a raster grid.
+Just like photos taken by digital camera, each feature in a spatial raster data set represents a cell.
+Position of each cell is captured in this data.
+Cells in a spatial raster data set have the same width and height.
 
 <!-- TODO: Add figures demonstrating different types of spatial data. -->
+
+For spatial point, line and polygon data, each feature can be simple or multiple.
+And usually there are multiple "bands" in raster data.
+These bands have the same geographical settings, but capture different data.
+
+### Format of Spatial Data
+
+To storage spatial data properly on our computer, there are tens and hundreds of file formats desgined in the past decades.
+In this section, we will only introduce some popular formats, which can be accepted by most geographical infromation softwares.
+
+#### Comma Seperated Values (CSV)
+
+This format is probibly the most popular one.
+In a CSV file which is actually a table, each row represents a entity/record.
+Columns are seperated by commas, representing attributes.
+Geometry information is stored in a special column.
+For spatial point data which we only need coordinates of those points, there are some columns telling us values of every dimension,
+such as "longitude" and "latitude".
+For spatial line data or polygon data, everything is not that simple.
+Geometries are represented by texts of a special form listed in a column.
+From the special texts, we can know what they look like.
+This form is called "well-known text".
+
+The strengths of this data type are obvious.
+It is readable for human.
+
+When we talk about the formats of spatial data, we need to emphesis its difference from file extension name on computer.
 
 ## Spatial Effects
 
